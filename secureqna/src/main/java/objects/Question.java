@@ -1,12 +1,11 @@
 package objects;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
-public class Questions {
+public class Question {
 
     private static int contador=0;
 
@@ -22,11 +21,11 @@ public class Questions {
         return possible.equals(possibleAnswer.get(correctAnswer));
     }
 
-    public Questions(){
+    public Question(){
         id=contador++;
         contador+=1;
     }
-    public Questions(String question, List<String> possibleAnswer){
+    public Question(String question, List<String> possibleAnswer){
 
     }
 
