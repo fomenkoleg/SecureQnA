@@ -11,4 +11,9 @@ public class GenericController {
     public String index(Model model){
         return "index";
     }
+
+    @GetMapping("/questionsStart")
+    public String questions(Model model){
+        return "preguntas";
+    }
 }
