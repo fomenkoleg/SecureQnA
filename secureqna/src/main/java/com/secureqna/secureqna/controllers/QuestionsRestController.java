@@ -1,19 +1,26 @@
-package com.secureqna.secureqna;
+package com.secureqna.secureqna.controllers;
 
-import exceptions.QuestionIdFailure;
-import exceptions.QuestionNotFound;
-import objects.Question;
+import com.secureqna.secureqna.exceptions.QuestionIdFailure;
+import com.secureqna.secureqna.exceptions.QuestionNotFound;
+import com.secureqna.secureqna.objects.Question;
+import com.secureqna.secureqna.services.AnswerService;
+import com.secureqna.secureqna.services.QuestionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
-@RequestMapping("/api/questions")
+@RequestMapping("/api")
 public class QuestionsRestController {
 
     @Autowired
     QuestionsService service = new QuestionsService();
+
+    @Autowired
+    AnswerService answerService = new AnswerService();
 
     @DeleteMapping("/remove/{username}")
     public ResponseEntity<Question> removeClient(@PathVariable int id) {
@@ -33,6 +40,21 @@ public class QuestionsRestController {
         }catch (QuestionIdFailure questionIdFailure){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<Collection<Question>> getAllQuestions(){
+        return new ResponseEntity<>(this.service.getAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/all/random")
+    public ResponseEntity<Collection<Question>> getAllQuestionsRandom(){
+        return new ResponseEntity<>(this.service.getRandomQuestionsList(),HttpStatus.OK);
+    }
+
+    @GetMapping("/number")
+    public ResponseEntity<Long> getNumberOfQuestions(){
+        return new ResponseEntity<>(this.service.getNumber(), HttpStatus.OK);
     }
 
 
