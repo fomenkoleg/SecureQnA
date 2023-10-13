@@ -1,6 +1,7 @@
 package com.secureqna.secureqna.objects;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@Getter
 public class Question {
 
 

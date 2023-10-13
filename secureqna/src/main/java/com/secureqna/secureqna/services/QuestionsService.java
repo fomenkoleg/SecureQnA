@@ -1,5 +1,6 @@
 package com.secureqna.secureqna.services;
 
+import com.google.gson.Gson;
 import com.secureqna.secureqna.repositories.AnswerRepository;
 import com.secureqna.secureqna.repositories.QuestionsRepository;
 import com.secureqna.secureqna.exceptions.QuestionIdFailure;
