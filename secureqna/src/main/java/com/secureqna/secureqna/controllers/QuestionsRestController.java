@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -22,7 +23,7 @@ public class QuestionsRestController {
     @Autowired
     AnswerService answerService = new AnswerService();
 
-    @DeleteMapping("/remove/{username}")
+    @DeleteMapping("/remove/{id}")
     public ResponseEntity<Question> removeClient(@PathVariable int id) {
         try {
             Question question = service.rmQuestion(id);
@@ -42,6 +43,17 @@ public class QuestionsRestController {
         }
     }
 
+    @PostMapping("/supernew")
+    public ResponseEntity<List<Question>> newClientRaw(@RequestBody List<Question> questions){
+        //try {
+            service.addRaw(questions);
+            return new ResponseEntity<>(questions,HttpStatus.CREATED);
+        /*}catch (QuestionIdFailure questionIdFailure){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }*/
+    }
+
+
     @GetMapping("/all")
     public ResponseEntity<Collection<Question>> getAllQuestions(){
         return new ResponseEntity<>(this.service.getAll(), HttpStatus.OK);
@@ -49,7 +61,7 @@ public class QuestionsRestController {
 
     @GetMapping("/all/random")
     public ResponseEntity<Collection<Question>> getAllQuestionsRandom(){
-        return new ResponseEntity<>(this.service.getRandomQuestionsList(),HttpStatus.OK);
+        return new ResponseEntity<>(this.service.getRandomQuestionsList(10),HttpStatus.OK);
     }
 
     @GetMapping("/number")

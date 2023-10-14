@@ -9,8 +9,7 @@ import com.secureqna.secureqna.objects.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class QuestionsService {
@@ -25,17 +24,19 @@ public class QuestionsService {
     private AnswerRepository answerRepository;
 
 
-    public Collection<Question> getRandomQuestionsList(){
-        int n = 10; //por ejemplo, mostramos 10 preguntas
-        Collection<Question> questions = repository.findAll();
-        int maxQuestions=questions.size();
-        Random rand = new Random();
-        long numeroAleatorio;
-        for (int i=0;i<n;i++){  //siendo n el numero de preguntas a mostrarr en la pagina
-            numeroAleatorio = rand.nextInt(maxQuestions) + 1;
-            repository.findById(numeroAleatorio).ifPresent(questions::remove); //busca por id, si esta, lo borra de la lista
+    public List<Question> getRandomQuestionsList(int cantidad) {
+        List<Question> todasLasPreguntas = repository.findAll();
+
+        // Verificar que la cantidad solicitada no sea mayor que el total de preguntas disponibles
+        if (cantidad > todasLasPreguntas.size()) {
+            throw new IllegalArgumentException("La cantidad solicitada es mayor que el número total de preguntas");
         }
-        return questions;
+
+        // Mezclar las preguntas
+        Collections.shuffle(todasLasPreguntas);
+
+        // Obtener las primeras 'cantidad' preguntas
+        return todasLasPreguntas.subList(0, cantidad);
     }
 
     public Question getQuestion(long id)throws QuestionNotFound{
@@ -72,6 +73,21 @@ public class QuestionsService {
 
     public Long getNumber(){
         return this.repository.count();
+    }
+
+    public void addRaw(List<Question> questions){
+        for (Question question : questions) {
+            try {
+                add(question);
+            } catch (QuestionIdFailure questionIdFailure) {
+                System.out.println("TOTNTO");
+            }
+        }
+    }
+
+    public List<Question> getQuestionList(){
+        List<Question> questions = this.repository.findAll();
+        return questions;
     }
 
 

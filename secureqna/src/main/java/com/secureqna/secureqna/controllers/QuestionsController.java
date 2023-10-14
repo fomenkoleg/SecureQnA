@@ -21,7 +21,7 @@ public class QuestionsController {
 
     @GetMapping("/questions")
     public String getQuestions(Model model){  //mostrara la pagina con las preguntas para responder
-        Collection<Question> allQuestionsRndom=allQuestions.getRandomQuestionsList();
+        Collection<Question> allQuestionsRndom=allQuestions.getRandomQuestionsList(10);
         model.addAttribute("allQuestions",allQuestions);
         return "questions";
     }
