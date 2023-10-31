@@ -45,14 +45,10 @@ public class QuestionsRestController {
 
     @PostMapping("/supernew")
     public ResponseEntity<List<Question>> newClientRaw(@RequestBody List<Question> questions){
-        //try {
             service.addRaw(questions);
             return new ResponseEntity<>(questions,HttpStatus.CREATED);
-        /*}catch (QuestionIdFailure questionIdFailure){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }*/
-    }
 
+    }
 
     @GetMapping("/all")
     public ResponseEntity<Collection<Question>> getAllQuestions(){

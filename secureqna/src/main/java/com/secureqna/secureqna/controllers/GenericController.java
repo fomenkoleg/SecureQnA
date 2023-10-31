@@ -27,7 +27,6 @@ public class GenericController {
     @Autowired
     private QuestionsRepository repository;
 
-
     @GetMapping("/")
     public String index(Model model){
         return "index";
@@ -35,19 +34,11 @@ public class GenericController {
 
     @GetMapping("/questionsStart")
     public String questions(Model model){
-        Collection<Question> questions=allQuestions.getRandomQuestionsList();
-        List<QuestionJSON> jsonQuestions = new ArrayList<>();
-
-        for (Question q : questions){
-            QuestionJSON newQ = new QuestionJSON(q);
-            jsonQuestions.add(newQ);
-        }
-
-        Gson gson = new Gson();
-        String jsonPreguntas = gson.toJson(jsonQuestions);
-        System.out.println("json = " + jsonPreguntas);
-        model.addAttribute("jsonPreguntas", jsonPreguntas);
         return "preguntas";
     }
 
+    @GetMapping("/comingSoon")
+    public String comingSoon(Model model){
+        return "comingSoon";
+    }
 }

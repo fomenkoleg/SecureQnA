@@ -27,13 +27,13 @@ public class QuestionJSON {
         this.optionC = question.getPossibleAnswer().get(2).getContent();
         this.optionD = question.getPossibleAnswer().get(3).getContent();
         if(this.optionA.equals(question.getCorrectAnswer())){
-            this.correctOption="OptionA";
+            this.correctOption="optionA";
         } else if(this.optionB.equals(question.getCorrectAnswer())){
-            this.correctOption="OptionB";
+            this.correctOption="optionB";
         } else if(this.optionC.equals(question.getCorrectAnswer())){
-            this.correctOption="OptionC";
+            this.correctOption="optionC";
         } else if(this.optionD.equals(question.getCorrectAnswer())){
-            this.correctOption="OptionD";
+            this.correctOption="optionD";
         }
     }
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" >
-<head onload="NextQuestion(0, {{jsonPreguntas}})" >
+<head>
   <!-- Site made with Mobirise Website Builder v5.9.6, https://mobirise.com -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
   <meta name="description" content="">
   
   
-  <title>Home</title>
+  <title>Secure QnA</title>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
@@ -23,12 +23,13 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bellota+Text:300,300i,400,400i,700,700i&display=swap"></noscript>
   <link rel="preload" as="style" href="/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/mobirise/css/mbr-additional.css" type="text/css">
 
-  
-  
+
+
   
 </head>
-<body>
-  
+
+<body onload="cargarPreguntas('{{jsonPreguntas}}'); NextQuestion(0)" >
+<!--   <span hidden id="estasSonLasPreguntas"></span> -->
   <section data-bs-version="5.1" class="menu menu1 cid-sFGMsvHDIa" once="menu" id="menu1-1">
     
 
@@ -36,7 +37,7 @@
         <div class="container">
             <div class="navbar-brand">
                 
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-7" href="https://mobiri.se">Aprenda ciberseguridad</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-7" href="/">Secure QnA</a></span>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
@@ -47,12 +48,12 @@
                 </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="#top">Inicio</a></li><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="index.html#features12-6">Conócenos</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="index.html#features3-4">Cuestionarios</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="index.html#form5-d">Contacto</a>
+                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/">Inicio</a></li><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/">Conócenos</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/questionsStart">Cuestionarios</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/comingSoon">Contacto</a>
                     </li></ul>
                 
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-danger display-4" href="https://mobiri.se">Regístrate</a></div>
+                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-danger display-4" href="/comingSoon">Regístrate</a></div>
             </div>
         </div>
     </nav>
@@ -72,13 +73,13 @@
 
                     <div class="modal-content-container">
 
-                        <h1>Congratulations, Quiz Completed.</h1>
+                        <h1>Enhorabuena!</h1>
 
                         <div class="grade-details">
-                            <p>Attempts : 10</p>
-                            <p>Wrong Answers : <span id="wrong-answers"></span></p>
-                            <p>Right Answers : <span id="right-answers"></span></p>
-                            <p>Grade : <span id="grade-percentage"></span>%</p>
+                            <p>Intentos : 10</p>
+                            <p>Respuestas Incorrectas : <span id="wrong-answers"></span></p>
+                            <p>Respuestas Correctas : <span id="right-answers"></span></p>
+                            <p>Nota : <span id="grade-percentage"></span>%</p>
                             <p ><span id="remarks"></span></p>
                         </div>
 
@@ -93,8 +94,8 @@
                 <div class="game-quiz-container">
 
                     <div class="game-details-container">
-                        <h1>Score : <span id="player-score"></span> / 10</h1>
-                        <h1> Question : <span id="question-number"></span> / 10</h1>
+                        <h1>Puntuación : <span id="player-score"></span> / 10</h1>
+                        <h1>Pregunta : <span id="question-number"></span> / 10</h1>
                     </div>
 
                     <div class="game-question-container">
@@ -106,10 +107,10 @@
                         <div class="modal-container" id="option-modal">
 
                             <div class="modal-content-container">
-                                <h1>Please Pick An Option</h1>
+                                <h1>Elige una opción</h1>
 
                                 <div class="modal-button-container">
-                                    <button onclick="closeOptionModal()">Continue</button>
+                                    <button onclick="closeOptionModal()">Continuar</button>
                                 </div>
 
                             </div>
@@ -138,22 +139,16 @@
                     <input type="radio" id="option-four" name="option" class="radio" value="optionD" />
                     <label for="option-four" class="option" id="option-four-label"></label>
                 </span>
-
-
                     </div>
-
                     <div class="next-button-container">
                         <button onclick="handleNextQuestion()">Next Question</button>
                     </div>
-
                 </div>
-
-                
-                
             </div>
         </div>
     </div>
 </section>
+
 
   <script src="/js/index.js"></script>
 </body>
