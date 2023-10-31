@@ -167,22 +167,21 @@
     </div>
     <div class="row justify-content-center mt-4">
       <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-        <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="URaKByr747DD2FgN2AyCQ69eYRWFIwzxAz7YhuTHxy5hN7JGrEZaQow0TW6Ig/Ho932EbMH9hFrQBc/w3q7dmhvQLcd+Kg4t1osRAok6SbiIUdKNWggNv9TejJ0R1Uyo">
-          <div class="row">
-            <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">¡Gracias por tu mensaje!</div>
-            <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some
-              problem!</div>
-          </div>
+        <form action="/send" method="post" class="mbr-form form-with-styler" data-form-title="Form Name">
           <div class="dragArea row">
             <div class="col-md col-sm-12 form-group mb-3" data-for="name">
-              <input type="text" name="name" placeholder="Nombre" data-form-field="name" class="form-control" value="" id="name-form5-d">
+              <input type="text" name="username" placeholder="Usuario" data-form-field="name" class="form-control" value="" id="name-form5-d">
             </div>
             <div class="col-md col-sm-12 form-group mb-3" data-for="email">
-              <input type="email" name="email" placeholder="E-mail" data-form-field="email" class="form-control" value="" id="email-form5-d">
+              <input type="text" name="email" placeholder="E-mail" data-form-field="email" class="form-control" value="" id="email-form5-d">
+            </div>
+
+            <div class="col-md col-sm-12 form-group mb-3" data-for="name">
+              <input type="text" name="title" placeholder="Motivos" data-form-field="name" class="form-control" value="" id="email-form2-d">
             </div>
 
             <div class="col-12 form-group mb-3" data-for="textarea">
-              <textarea name="textarea" placeholder="Descripción" data-form-field="textarea" class="form-control" id="textarea-form5-d"></textarea>
+              <textarea name="content" placeholder="Cuentanos tu problema" data-form-field="textarea" class="form-control"  id="textarea-form5-d"></textarea>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-secondary display-4">Enviar&nbsp;</button></div>
           </div>
