@@ -39,11 +39,4 @@ public class QuestionsController {
         return "preguntas";
     }
 
-    @GetMapping("/questions/ressult")
-    public String getRessult(@ModelAttribute List<Integer> solutions){  //es la que recibe las respuestas y procesa en el service el resultado
-
-        return "finalScore";
-    }
-
-
 }

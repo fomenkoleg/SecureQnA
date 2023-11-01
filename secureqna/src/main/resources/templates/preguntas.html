@@ -29,7 +29,7 @@
 </head>
 
 <body onload="cargarPreguntas('{{jsonPreguntas}}'); NextQuestion(0)" >
-<!--   <span hidden id="estasSonLasPreguntas"></span> -->
+
   <section data-bs-version="5.1" class="menu menu1 cid-sFGMsvHDIa" once="menu" id="menu1-1">
     
 
@@ -53,7 +53,10 @@
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/comingSoon">Contacto</a>
                     </li></ul>
                 
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-danger display-4" href="/comingSoon">Regístrate</a></div>
+                <div class="navbar-buttons mbr-section-btn">
+                    <a class="btn btn-danger display-4" href="/registerPage">Regístrate</a>
+                    <a class="btn btn-secondary display-4" href="/loginPage">Iniciar Sesión</a>
+                </div>
             </div>
         </div>
     </nav>

@@ -32,11 +32,6 @@ public class GenericController {
         return "index";
     }
 
-    @GetMapping("/questionsStart")
-    public String questions(Model model){
-        return "preguntas";
-    }
-
     @GetMapping("/comingSoon")
     public String comingSoon(Model model){
         return "comingSoon";
