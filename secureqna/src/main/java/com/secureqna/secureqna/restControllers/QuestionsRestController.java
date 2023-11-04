@@ -1,4 +1,4 @@
-package com.secureqna.secureqna.controllers;
+package com.secureqna.secureqna.restControllers;
 
 import com.secureqna.secureqna.exceptions.QuestionIdFailure;
 import com.secureqna.secureqna.exceptions.QuestionNotFound;

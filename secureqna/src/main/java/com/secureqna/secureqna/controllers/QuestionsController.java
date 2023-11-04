@@ -9,12 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Controller
+@RequestMapping("/secureQnA/questions")
 public class QuestionsController {
 
     //aun no sirven pero los explico con comentarios.
@@ -22,7 +24,7 @@ public class QuestionsController {
     @Autowired
     private QuestionsService allQuestions= new QuestionsService();
 
-    @GetMapping("/questions")
+    @GetMapping("/")
     public String getQuestions(Model model){  //mostrara la pagina con las preguntas para responder
         Collection<Question> questions=allQuestions.getRandomQuestionsList(10);
         List<QuestionJSON> jsonQuestions = new ArrayList<>();
@@ -38,5 +40,6 @@ public class QuestionsController {
         model.addAttribute("jsonPreguntas", jsonPreguntas);
         return "preguntas";
     }
+
 
 }

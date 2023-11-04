@@ -10,18 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/secureQnA/mail")
 public class MailProofController {
 
     @Autowired
     private JavaMailSender javaMailSender;
 
-    @GetMapping("/contact")
-    public String showContactForm(Model model) {
-        model.addAttribute("message", new Mail());
-        return "contactForm";
-    }
 
     @PostMapping("/send")
     public String handleContactForm(@ModelAttribute Mail message) {
