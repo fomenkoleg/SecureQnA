@@ -57,7 +57,7 @@ public class UserService {
             throw new UserOnRegisterAlreadyIn();
         }else{
             if(UserSqna.check(user)){
-                user.getRoles().add("ADMIN");
+                user.getRoles().add("USERSQNA");
                 String passToEncode=user.getPass();
                 user.setPass(passwordEncoder.encode(passToEncode));
                 this.repository.save(user);
