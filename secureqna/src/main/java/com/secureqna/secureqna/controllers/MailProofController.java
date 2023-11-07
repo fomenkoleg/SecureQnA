@@ -27,6 +27,6 @@ public class MailProofController {
         mailMessage.setSubject(message.getTitle());
         mailMessage.setText(message.getUsername()+" pregunta:\n"+message.getContent()+"\nSu correo para responderle es: "+message.getEmail());
         javaMailSender.send(mailMessage);
-        return "index";
+        return "redirect:/secureQnA/home";
     }
 }

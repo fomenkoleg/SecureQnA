@@ -89,7 +89,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().usernameParameter("username");
         http.formLogin().passwordParameter("pass");
         http.formLogin().defaultSuccessUrl("/secureQnA/home");
-        http.formLogin().failureUrl("/secureQnA/loginError");
+        http.formLogin().failureUrl("/secureQnA/login");
 
 // Logout
         http.logout().logoutUrl("/secureQnA/logout/**")

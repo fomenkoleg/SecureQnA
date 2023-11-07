@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.xml.bind.SchemaOutputResolver;
+
 
 
 
@@ -52,9 +54,9 @@ public class GenericController {
     public String clientCreator(@ModelAttribute UserSqna newClient) {
         try {
             service.add(newClient);
-            return "redirect:/gymnacio/login";
+            return "redirect:/secureQnA/login";
         }catch (UserOnRegisterAlreadyIn userOnRegisterAlreadyIn){
-            return "redirect:/gymnacio/signUpError";
+            return "error";
         }
     }
 
