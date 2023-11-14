@@ -50,12 +50,24 @@ public class GenericController {
     }
 
     @GetMapping("/login")
-    public String login(Model model){
+    public String login(Model model, HttpServletRequest request){
+        Principal possible= request.getUserPrincipal();
+        if (possible == null){
+            model.addAttribute("logged", false);
+        }else {
+            model.addAttribute("logged", true);
+        }
         return "login";
     }
 
     @GetMapping("/signUp")
-    public String register(Model model){
+    public String register(Model model, HttpServletRequest request){
+        Principal possible= request.getUserPrincipal();
+        if (possible == null){
+            model.addAttribute("logged", false);
+        }else {
+            model.addAttribute("logged", true);
+        }
         return "register";
     }
 

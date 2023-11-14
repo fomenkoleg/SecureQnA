@@ -49,11 +49,21 @@
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/secureQnA/questions/">Cuestionarios</a></li>
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/secureQnA/home">Contacto</a>
                     </li></ul>
-                
+
+                {{#logged}}
+                <div class="navbar-buttons mbr-section-btn">
+                    <form method="post" action="/secureQnA/logout">
+                        <input type="submit"  class="btn btn-danger display-4" value="Cerrar sesión">
+                        <input type="hidden" name="_csrf" value="{{token}}">
+                    </form>
+                </div>
+                {{/logged}}
+                {{^logged}}
                 <div class="navbar-buttons mbr-section-btn">
                     <a class="btn btn-danger display-4" href="/secureQnA/signUp">Regístrate</a>
                     <a class="btn btn-secondary display-4" href="/secureQnA/login">Iniciar Sesión</a>
                 </div>
+                {{/logged}}
             </div>
         </div>
     </nav>

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +27,13 @@ public class QuestionsController {
     private QuestionsService allQuestions= new QuestionsService();
 
     @GetMapping("/")
-    public String getQuestions(Model model){  //mostrara la pagina con las preguntas para responder
+    public String getQuestions(Model model, HttpServletRequest request){  //mostrara la pagina con las preguntas para responder
+        Principal possible= request.getUserPrincipal();
+        if (possible == null){
+            model.addAttribute("logged", false);
+        } else {
+            model.addAttribute("logged", true);
+        }
         Collection<Question> questions=allQuestions.getRandomQuestionsList(10);
         List<QuestionJSON> jsonQuestions = new ArrayList<>();
         int counter = 0;
