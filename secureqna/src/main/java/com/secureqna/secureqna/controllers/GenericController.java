@@ -81,5 +81,14 @@ public class GenericController {
         }
     }
 
-
+    @GetMapping("/comingSoon")
+    public String comingSoon(Model model, HttpServletRequest request){
+        Principal possible= request.getUserPrincipal();
+        if (possible == null){
+            model.addAttribute("logged", false);
+        }else {
+            model.addAttribute("logged", true);
+        }
+        return "comingSoon";
+    }
 }

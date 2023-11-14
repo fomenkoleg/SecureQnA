@@ -27,6 +27,8 @@ public class Question {
     private List<Answers> possibleAnswer;
 
     private String correctAnswer;
+    //la dificultad puede ser de 1-3
+    private int difficulty;
 
     public boolean checkAnswer(Answers possible){
         return possible.getContent().equals(correctAnswer);
