@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.SchemaOutputResolver;
+import java.security.Principal;
 
 
 
@@ -36,7 +38,14 @@ public class GenericController {
 
 
     @GetMapping("/home")
-    public String index(Model model){
+    public String index(Model model, HttpServletRequest request){
+        Principal possible= request.getUserPrincipal();
+        if (possible == null){
+            model.addAttribute("logged", false);
+        }else {
+            model.addAttribute("logged", true);
+            model.addAttribute("name", possible.getName());
+        }
         return "index";
     }
 
