@@ -45,6 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/secureQnA/home").permitAll();
         http.authorizeRequests().antMatchers("/secureQnA/home/").permitAll();
         http.authorizeRequests().antMatchers("/secureQnA/login/**").permitAll();
+        http.authorizeRequests().antMatchers("/secureQnA/links").permitAll();
         //http.authorizeRequests().antMatchers("/secureQnA/loginError/**").permitAll();
         //http.authorizeRequests().antMatchers("/secureQnA/signUpError/**").permitAll();
         http.authorizeRequests().antMatchers("/secureQnA/signUp/**").permitAll();

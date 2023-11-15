@@ -91,4 +91,15 @@ public class GenericController {
         }
         return "comingSoon";
     }
+
+    @GetMapping("/links")
+    public String links(Model model, HttpServletRequest request){
+        Principal possible= request.getUserPrincipal();
+        if (possible == null){
+            model.addAttribute("logged", false);
+        }else {
+            model.addAttribute("logged", true);
+        }
+        return "links";
+    }
 }
