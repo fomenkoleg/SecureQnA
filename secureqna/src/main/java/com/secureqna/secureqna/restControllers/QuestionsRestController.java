@@ -57,7 +57,7 @@ public class QuestionsRestController {
 
     @GetMapping("/all/random")
     public ResponseEntity<Collection<Question>> getAllQuestionsRandom(){
-        return new ResponseEntity<>(this.service.getRandomQuestionsList(10),HttpStatus.OK);
+        return new ResponseEntity<>(this.service.getRandomQuestionsList(10, 1),HttpStatus.OK);
     }
 
     @GetMapping("/number")

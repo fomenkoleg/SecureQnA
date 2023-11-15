@@ -24,7 +24,7 @@ public class QuestionsService {
     private AnswerRepository answerRepository;
 
 
-    public List<Question> getRandomQuestionsList(int cantidad) {
+    public List<Question> getRandomQuestionsList(int cantidad, int difficulty) {
         List<Question> todasLasPreguntas = repository.findAll();
 
         // Verificar que la cantidad solicitada no sea mayor que el total de preguntas disponibles
@@ -32,11 +32,19 @@ public class QuestionsService {
             throw new IllegalArgumentException("La cantidad solicitada es mayor que el número total de preguntas");
         }
 
+        //obtención de la dificultad
+        List<Question> preguntasNDiff = new ArrayList<>();
+        for (Question q : todasLasPreguntas){
+            if(q.getDifficulty()==difficulty){
+                preguntasNDiff.add(q);
+            }
+        }
+
         // Mezclar las preguntas
-        Collections.shuffle(todasLasPreguntas);
+        Collections.shuffle(preguntasNDiff);
 
         // Obtener las primeras 'cantidad' preguntas
-        return todasLasPreguntas.subList(0, cantidad);
+        return preguntasNDiff.subList(0, cantidad);
     }
 
     public Question getQuestion(long id)throws QuestionNotFound{
