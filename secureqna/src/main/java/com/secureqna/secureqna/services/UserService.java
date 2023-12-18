@@ -5,15 +5,14 @@ import com.secureqna.secureqna.exceptions.userExceptions.InvalidUseForSecureQnAF
 import com.secureqna.secureqna.exceptions.userExceptions.NoUsers;
 import com.secureqna.secureqna.exceptions.userExceptions.UserNotFound;
 import com.secureqna.secureqna.exceptions.userExceptions.UserOnRegisterAlreadyIn;
+import com.secureqna.secureqna.objects.Question;
 import com.secureqna.secureqna.objects.UserSqna;
 import com.secureqna.secureqna.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -172,6 +171,19 @@ public class UserService {
             throw new UserNotFound();
         }
     }
+
+
+    public Collection<UserSqna> topTenUsers(){
+
+        List<UserSqna> allUsers = repository.findAll();
+        allUsers.sort(Comparator.comparingLong(UserSqna::getScore));
+        List<UserSqna> sublist = allUsers.subList(0, 15);
+        System.out.println(sublist);
+
+        return sublist;
+    }
+
+
 
 
 

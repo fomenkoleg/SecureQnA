@@ -7,10 +7,7 @@ import com.secureqna.secureqna.services.QuestionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -116,6 +113,11 @@ public class QuestionsController {
         System.out.println("json = " + counter);
         model.addAttribute("jsonPreguntas", jsonPreguntas);
         return "preguntas";
+    }
+
+    @PostMapping("/ranking")
+    public String ranking(Model model, HttpServletRequest request){
+        return "ranking";
     }
 
 }

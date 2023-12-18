@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -32,8 +33,10 @@ public class UserSqna {
 
     private String email;
 
+    private Long score;
 
-    public static boolean check(UserSqna user){
+
+    public static boolean check(@NotNull UserSqna user){
         if (user.fullName.length()>81){
             return false;
         }else if(user.email.length()>30){
@@ -54,7 +57,12 @@ public class UserSqna {
         user.setRoles(roles);
     }
 
-
+    public void addScore(long score){
+        if (this.score == null){
+            this.score = (long) 0;
+        }
+        this.score += score;
+    }
 
 
 }

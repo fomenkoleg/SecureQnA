@@ -48,10 +48,14 @@
                 </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/secureQnA/home">Inicio</a></li><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/secureQnA/comingSoon">Conócenos</a></li>
+                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/secureQnA/home">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/secureQnA/questions/medium">Cuestionarios</a></li>
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="/secureQnA/links">Enlaces Útiles</a>
-                    </li></ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link text-white text-primary display-7" href="/secureQnA/team">El Equipo</a>
+                    </li>
+                </ul>
 
                 {{#logged}}
                 <div class="navbar-buttons mbr-section-btn">
@@ -87,7 +91,7 @@
                     <div class="modal-content-container">
 
                         <h1>Enhorabuena!</h1>
-
+                        <form action="/secureQnA/questions/ranking" method="post">
                         <div class="grade-details">
                             <p>Intentos : 10</p>
                             <p>Respuestas Incorrectas : <span id="wrong-answers"></span></p>
@@ -95,10 +99,14 @@
                             <p>Nota : <span id="grade-percentage"></span>%</p>
                             <p ><span id="remarks"></span></p>
                         </div>
+                            <input type="hidden" id="score_update" name="score">
+                            <div class="modal-button-container">
+                                <button type="submit">Continue</button>
+                            </div>
+                            <input type="hidden" name="_csrf" value="{{token}}">
+                        </form>
 
-                        <div class="modal-button-container">
-                            <button onclick="closeScoreModal()">Continue</button>
-                        </div>
+
 
                     </div>
                 </div>

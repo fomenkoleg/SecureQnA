@@ -102,4 +102,8 @@ public class GenericController {
         }
         return "links";
     }
+    @GetMapping("/team")
+    public String team(Model model){
+        return "aboutus";
+    }
 }
